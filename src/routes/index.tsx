@@ -17,6 +17,13 @@ export enum ROUTES_NAMES {
     Film = "Film"
 }
 
+const HomeComponent = props => (
+    <Home  
+        ROUTES_NAMES={ROUTES_NAMES} 
+        {...props}
+    />
+);
+
 const HomeStack = (props) => (
     <Stack.Navigator initialRouteName={ROUTES_NAMES.Home}>
             <Stack.Screen
@@ -24,7 +31,7 @@ const HomeStack = (props) => (
                 headerShown: false
             }}
             name={ROUTES_NAMES.Home}
-            component={Home}
+            component={HomeComponent}
         />
         <Stack.Screen
             options={{
@@ -71,7 +78,7 @@ export default class Routes extends Component<any>  {
                     initialRouteName={ROUTES_NAMES.Home}
                 >
                     <Drawer.Screen name="Star Wars" component={HomeStack} />
-                    <Drawer.Screen name="Configuração" component={Configuration} />
+                    <Drawer.Screen name="Settings" component={Configuration} />
                 </Drawer.Navigator>
                 
             </NavigationContainer>

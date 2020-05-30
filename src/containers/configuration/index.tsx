@@ -13,12 +13,12 @@ import {
 
 @inject('configurationStore')
 @observer
-export default class Home extends Component {
+export default class Home extends Component<any> {
 
     header() {
         return (
             <CardHeader
-              title='Temas'
+              title='Themes'
             />
         );
     }
@@ -26,7 +26,7 @@ export default class Home extends Component {
     render() {
         return (
             <>
-                <Header navigation={this.props.navigation} title='Configuração' />
+                <Header navigation={this.props.navigation} title='Settings' />
                 <Layout style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5 }}>
                     
                     <Card header={this.header} style={{width: '100%'}}>

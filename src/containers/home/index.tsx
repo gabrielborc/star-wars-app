@@ -6,13 +6,13 @@ import Header from '../header';
 import { Layout, Card, Text } from '@ui-kitten/components';
 
 import HomeStore from '../../stores/home.store';
-import { ROUTES_NAMES } from '../../routes';
 import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 
 interface Props {
     homeStore: HomeStore,
-    navigation: any
+    navigation: any,
+    ROUTES_NAMES: any,
 }
 
 @inject('homeStore')
@@ -29,13 +29,13 @@ export default class Home extends Component<Props> {
         const { films } = this.props.homeStore;
 
         const navigateScreen = (id: number) => {
-            const { navigate } = this.props.navigation;
+            const { navigation: { navigate }, ROUTES_NAMES } = this.props;
             navigate(ROUTES_NAMES.Film, { id });
         }
 
         return (
             <>
-                <Header navigation={this.props.navigation} title='Etanol ou Gasolina?' />
+                <Header navigation={this.props.navigation} title='List Films' />
                 <Layout style={{ flex: 1, backgroundColor: 'black' }}>
                     <ScrollView>
                         {films.map((film, index) => (
