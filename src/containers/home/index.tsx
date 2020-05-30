@@ -36,7 +36,7 @@ export default class Home extends Component<Props> {
         return (
             <>
                 <Header navigation={this.props.navigation} title='List Films' />
-                <Layout style={{ flex: 1, backgroundColor: 'black' }}>
+                <Layout style={{ flex: 1, paddingTop: 20 }}>
                     <ScrollView>
                         {films.map((film, index) => (
                             <Card onPress={() => navigateScreen(film.id)} key={index}>

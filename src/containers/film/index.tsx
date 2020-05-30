@@ -24,7 +24,7 @@ export default class Film extends Component<Props> {
  render() {
   const { film } = this.props.homeStore;
 
-  return (<Layout style={{ flex: 1, backgroundColor: 'black' }}>
+  return (<Layout style={{ flex: 1 }}>
    <ScrollView>
 
     {!film.episode_id && <Card><Text>Carregando...<Spinner /></Text></Card>}
