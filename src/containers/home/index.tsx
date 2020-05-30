@@ -3,53 +3,68 @@ import { Image } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
 import Header from '../header';
-import { Layout, Card, Input, Button } from '@ui-kitten/components';
+import { Layout, Card, Text } from '@ui-kitten/components';
 
-const themes = {
-    icons: [
-        require('../../../assets/icon-dark.png'),
-        require('../../../assets/icon-light.png')
-    ]
+import HomeStore from '../../stores/home.store';
+import { ROUTES_NAMES } from '../../routes';
+import { ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
+
+interface Props {
+    homeStore: HomeStore,
+    navigation: any
 }
 
 @inject('homeStore')
 @inject('configurationStore')
 @observer
-export default class Home extends Component<any> {
+export default class Home extends Component<Props> {
+
+    async componentDidMount() {
+        const { getFilms } = this.props.homeStore;
+        await getFilms();
+    }
+
     render() {
-        const {
-            etanol,
-            gasolina,
-            handleForm,
-            calculate
-        } = this.props.homeStore;
+        const { films } = this.props.homeStore;
+
+        const navigateScreen = (id: number) => {
+            const { navigate } = this.props.navigation;
+            navigate(ROUTES_NAMES.Film, { id });
+        }
 
         return (
             <>
                 <Header navigation={this.props.navigation} title='Etanol ou Gasolina?' />
-                <Layout style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5 }}>
-                    <Image source={themes.icons[this.props.configurationStore.indexTheme]} style={{ marginTop: -100, marginBottom: 50 }}/>
-
-                    <Card style={{ width: '100%' }}>
-                        <Input
-                            size='medium'
-                            placeholder='Etanol'
-                            value={etanol.toString()}
-                            onChangeText={etanol => handleForm({etanol})}
-                        />
-                        <Input
-                            size='medium'
-                            placeholder='Gasolina'
-                            value={gasolina.toString()}
-                            onChangeText={gasolina => handleForm({gasolina})}
-                        />
-
-                        <Button onPress={() => calculate()} style={{ marginTop: 5 }}>
-                            Calcular
-                        </Button>
-                    </Card>
+                <Layout style={{ flex: 1, backgroundColor: 'black' }}>
+                    <ScrollView>
+                        {films.map((film, index) => (
+                            <Card onPress={() => navigateScreen(film.id)} key={index}>
+                                <Text style={styles.title}>{film.title}</Text>
+                                <Text>Episode {film.episode_id.toString()}</Text>
+                            </Card>
+                        ))}
+                    </ScrollView>
                 </Layout>
             </>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingTop: '10',
+        padding: 8,
+    },
+    title: {
+        fontSize: 20,     
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+});

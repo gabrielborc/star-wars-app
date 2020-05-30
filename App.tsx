@@ -2,9 +2,9 @@ import 'react-native-gesture-handler';
 
 import * as Stores from './src/stores';
 
-import { IconRegistry } from '@ui-kitten/components';
-import { Provider } from 'mobx-react';
 import React from 'react';
+import { Provider } from 'mobx-react';
+import { IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 import Application from './src/containers/application';
