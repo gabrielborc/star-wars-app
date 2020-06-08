@@ -9,7 +9,7 @@ Aplicativo que compartilhar informações do universo do star wars.
 
 ## Conteúdo
 
-- [Demo - Heroku](#demo)
+- [Demo](#demo)
 - [Instalação](#instalação)
 - [Modo de uso](#modo-de-uso)
 
