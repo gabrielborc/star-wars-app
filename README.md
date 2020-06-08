@@ -2,6 +2,11 @@
 
 Aplicativo que compartilhar informações do universo do star wars.
 
+![screenshot-app1](./assets/screenshot1.png)
+
+![screenshot-app2](./assets/screenshot2.png)
+
+
 ## Conteúdo
 
 - [Demo - Heroku](#demo)
@@ -10,7 +15,9 @@ Aplicativo que compartilhar informações do universo do star wars.
 
 ## Demo
 
-Ainda não foi deseponibilizado, `EM BREVE!`
+Foi feito o deploy para a plataforma do expo.io, teste lá:
+
+https://expo.io/@gabrielborc/start-wars-app
 
 
 ## Instalação
@@ -34,7 +41,7 @@ $ expo install
 
 ## Modo de uso
 
-Após seguir os passos de [instalação](#instalação) e [banco de dados], execute o projeto usando o comando abaixo na pasta raiz do projeto:
+Após seguir os passos de [instalação](#instalação), execute o projeto usando o comando abaixo na pasta raiz do projeto:
 
 ```
 $ expo start
